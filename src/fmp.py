@@ -1,9 +1,9 @@
 import abc
 
-from ._utils import _init_session
+from src._utils import _init_session
 
 
-class Base(abc.ABC):
+class FmpBase(abc.ABC):
     """Abstract base class for Financial Modeling Prep endpoints."""
     _URL_V3: str = "https://financialmodelingprep.com/api/v3"
     _URL_V4: str = "https://financialmodelingprep.com/api/v4"
