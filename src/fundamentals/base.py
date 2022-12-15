@@ -21,6 +21,12 @@ class Base(abc.ABC):
         session: requests.Session
             Requests session object.
         """
+        if api_key is None:
+            raise IOError("Fmp api key must be provided.")
+
+        if not isinstance(api_key, str):
+            raise TypeError("api_key must be of type str.")
+
         self.api_key = api_key
         self.session = _init_session(session)
 
@@ -44,6 +50,9 @@ class Base(abc.ABC):
             r = s.get(
                 url=url, params=params, timeout=(self._CONNECTION_TIMEOUT, self._READ_TIMEOUT)
             )
+
+            if 'Error Message' in r.json():
+                raise ValueError("Invalid fmp api key.")
 
             if r.status_code == 200 and len(r.json()) != 0:
                 return r.json()
