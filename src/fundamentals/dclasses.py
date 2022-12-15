@@ -151,4 +151,4 @@ class BalanceSheetStatement:
     finalLink: str
 
     def __repr__(self):
-        return f"{self.symbol} Income Statement: {self.date}"
+        return f"{self.symbol} Balance Sheet Statement: {self.date}"
