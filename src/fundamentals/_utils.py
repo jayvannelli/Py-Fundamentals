@@ -1,5 +1,6 @@
 
 def _validate_period(period: str) -> str:
+    """Validate period value; Only returns if valid."""
     from ._constants import VALID_PERIODS
 
     if not isinstance(period, str):
@@ -12,6 +13,7 @@ def _validate_period(period: str) -> str:
 
 
 def _validate_limit(limit: int) -> int:
+    """Validate limit value; Only returns if valid."""
     from ._constants import HIGH_LIMIT
 
     if not isinstance(limit, int):
