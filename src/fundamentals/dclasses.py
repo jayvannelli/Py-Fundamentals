@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True, eq=True, repr=False, slots=True)
+@dataclass(frozen=True, eq=True, slots=True)
 class CashFlowStatement:
     date: str
     symbol: str
@@ -48,7 +48,7 @@ class CashFlowStatement:
         return f"{self.symbol} Cash Flow Statement: {self.date}"
 
 
-@dataclass(frozen=True, eq=True, repr=False, slots=True)
+@dataclass(frozen=True, eq=True, slots=True)
 class IncomeStatement:
     date: str
     symbol: str
@@ -93,7 +93,7 @@ class IncomeStatement:
         return f"{self.symbol} Income Statement: {self.date}"
 
 
-@dataclass(frozen=True, eq=True, repr=False, slots=True)
+@dataclass(frozen=True, eq=True, slots=True)
 class BalanceSheetStatement:
     date: str
     symbol: str
