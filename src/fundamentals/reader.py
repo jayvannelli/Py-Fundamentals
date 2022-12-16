@@ -1,4 +1,4 @@
-from src.fmp import FmpBase
+from ..fmp import FmpBase
 from ._utils import _validate_period, _validate_limit
 
 
