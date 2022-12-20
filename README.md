@@ -37,7 +37,17 @@ for (r_cash_flow, f_cash_flow) in (reader_cash_flows, factory_cash_flows):
     ...                      # <class 'fundamentals.dclasses.CashFlowStatement'>
 ```
 
-### FundamentalsFactory
-Returns list of IncomeStatement, CashFlowStatement and/or 
-BalanceSheetStatement objects containing data.
+### Compare
+Compare allows you to return fundamental data for two stocks given their symbols upon instantiation.
+CompareFundamentals currently uses FundamentalFactory to return data.
+```python
+from fundamentals.compare import CompareFundamentals
 
+comparison = CompareFundamentals(symbol_one="MSFT", symbol_two="AMZN", api_key="abc123")
+
+# You can return two list objects.
+msft_cf, amzn_cf = comparison.cash_flow(period="quarter", limit=30)
+
+# Or the one tuple object containing the two lists.
+cash_flows = comparison.cash_flow(period="annual", limit=15)
+```
