@@ -23,12 +23,12 @@ each cash flow, income statement or balance sheet call needs a 'symbol' param pa
 from fundamentals import Fundamentals
 
 # Instantiating Fundamentals (no 'symbol' param passed).
-fundamentals_factory = Fundamentals(api_key="abc123")
+fundamentals = Fundamentals(api_key="abc123")
 
 # Symbol param MUST be passed during income statement call.
-msft_inc_stmts = fundamentals_factory.income_statement(symbol="MSFT",
-                                                       period="annual",
-                                                       limit=5)
+msft_inc_stmts = fundamentals.income_statement(symbol="MSFT",
+                                               period="annual",
+                                               limit=5)
 ```
 
 ### StockFundamentals 
@@ -39,11 +39,11 @@ cash flow, income statement and balance sheet calls.
 from fundamentals import StockFundamentals
 
 # Standard fundamentals factory ('symbol' param IS passed).
-aapl_fundamentals_factory = StockFundamentals(symbol="AAPL", api_key="abc123")
+aapl_fundamentals = StockFundamentals(symbol="AAPL", api_key="abc123")
 
 # No need to pass symbol param during balance sheet call.
-aapl_bal_sheets = aapl_fundamentals_factory.balance_sheet(period="quarter",
-                                                          limit=15)
+aapl_bal_sheets = aapl_fundamentals.balance_sheet(period="quarter",
+                                                  limit=15)
 ```
 
 # FundamentalsFactory & StockFundamentalsFactory
@@ -75,9 +75,9 @@ Used to return dataclasses from StockFundamentals class described above.
 from fundamentals import StockFundamentalsFactory
 
 # Stock fundamentals factory ('symbol' param IS passed).
-aapl_fundamentals_factory = StockFundamentalsFactory(symbol="AAPL", api_key="abc123")
+crm_fundamentals_factory = StockFundamentalsFactory(symbol="CRM", api_key="abc123")
 
 # No need to pass symbol during balance sheet call.
-aapl_bal_sheets = aapl_fundamentals_factory.balance_sheet(period="quarter",
-                                                          limit=15)
+crm_bal_sheets = crm_fundamentals_factory.balance_sheet(period="annual",
+                                                        limit=15)
 ```
