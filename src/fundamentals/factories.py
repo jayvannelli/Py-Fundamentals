@@ -78,8 +78,6 @@ class StockFundamentalsFactory(StockFundamentals):
 
         Parameters
         ----------
-        symbol : str
-            Stock ticker symbol.
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
@@ -98,8 +96,6 @@ class StockFundamentalsFactory(StockFundamentals):
 
         Parameters
         ----------
-        symbol : str
-            Stock ticker symbol.
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
@@ -118,8 +114,6 @@ class StockFundamentalsFactory(StockFundamentals):
 
         Parameters
         ----------
-        symbol : str
-            Stock ticker symbol.
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
