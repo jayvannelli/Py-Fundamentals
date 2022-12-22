@@ -1,18 +1,17 @@
-from .fmp import FmpBase
+from .readers import FmpSymbolReader
 from ._utils import _validate_period, _validate_limit
 
 
-class FundamentalsReader(FmpBase):
+class StockFundamentals(FmpSymbolReader):
+    """Establishes Fundamentals interface for specific stock (given a symbol)."""
 
-    def cash_flow(self, symbol: str, period: str, limit: int):
+    def cash_flow(self, period: str, limit: int):
         """*JSON VERSION*
 
         Obtain list of stock Cash Flow Statements using FMP endpoint.
 
         Parameters
         ----------
-        symbol : str
-            Stock ticker symbol.
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
@@ -20,20 +19,19 @@ class FundamentalsReader(FmpBase):
 
         :return: list[dict]
         """
-        return self.data(
-            url=f"{self._URL_V3}/cash-flow-statement/{symbol.upper()}",
+        return self._data(
+            url_version="v3",
+            path=f"cash-flow-statement/{self.symbol}",
             params={"period": _validate_period(period), "limit": _validate_limit(limit)}
         )
 
-    def income_statement(self, symbol: str, period: str, limit: int):
+    def income_statement(self, period: str, limit: int):
         """*JSON VERSION*
 
         Obtain list of stock Income Statements using FMP endpoint.
 
         Parameters
         ----------
-        symbol : str
-            Stock ticker symbol.
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
@@ -41,20 +39,19 @@ class FundamentalsReader(FmpBase):
 
         :return: list[dict]
         """
-        return self.data(
-            url=f"{self._URL_V3}/income-statement/{symbol.upper()}",
+        return self._data(
+            url_version="v3",
+            path=f"income-statement/{self.symbol}",
             params={"period": _validate_period(period), "limit": _validate_limit(limit)}
         )
 
-    def balance_sheet(self, symbol: str, period: str, limit: int):
+    def balance_sheet(self, period: str, limit: int):
         """*JSON VERSION*
 
         Obtain list of stock Balance Sheet Statements using FMP endpoint.
 
         Parameters
-         ----------
-        symbol : str
-            Stock ticker symbol.
+        ----------
         period : str
             Reporting period ('quarter' or 'annual').
         limit : int
@@ -62,7 +59,8 @@ class FundamentalsReader(FmpBase):
 
         :return: list[dict]
         """
-        return self.data(
-            url=f"{self._URL_V3}/balance-sheet-statement/{symbol.upper()}",
+        return self._data(
+            url_version="v3",
+            path=f"balance-sheet-statement/{self.symbol}",
             params={"period": _validate_period(period), "limit": _validate_limit(limit)}
         )
