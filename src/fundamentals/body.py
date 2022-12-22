@@ -1,9 +1,21 @@
-from .readers import FmpReader
+from .reader import FmpReader
 from ._utils import _validate_period, _validate_limit
 
 
 class Fundamentals(FmpReader):
     """Establishes standard Fundamentals interface."""
+    def __init__(self, api_key: str, session=None):
+        """Interface for standard Fmp reader classes.
+
+        Parameters
+        ----------
+        api_key: str
+            Financial Modeling Prep (FMP) Api Token.
+        session: requests.Session
+            Requests session object.
+        """
+        super().__init__(api_key=api_key, session=session)
+
     def cash_flow(self, symbol: str, period: str, limit: int):
         """*JSON VERSION*
 

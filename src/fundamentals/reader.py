@@ -1,11 +1,12 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from ._utils import _init_session
 
 
 class FmpReader(ABC):
     """Establishes child with basic FMP Reader interface."""
 
-    def __init__(self, api_key: str, session=None):
+    @abstractmethod
+    def __init__(self, api_key: str, session):
         """Interface for standard Fmp reader classes.
 
         Parameters
@@ -61,32 +62,3 @@ class FmpReader(ABC):
             raise IOError(
                 f"Request from: {self.__class__} with url: {url} returned empty list."
             )
-
-
-class FmpSymbolReader(FmpReader):
-    """Establishes child interface during instantiation with 'symbol' passed as an arg."""
-    def __init__(self, symbol: str, api_key: str, session=None):
-        """Interface for standard Fmp reader classes.
-
-        Parameters
-        ----------
-        symbol : str
-            Stock ticker symbol.
-        api_key: str
-            Financial Modeling Prep (FMP) Api Token.
-        session: requests.Session
-            Requests session object.
-        """
-        super().__init__(api_key=api_key, session=session)
-
-        self._symbol = symbol.upper()
-
-    @property
-    def symbol(self):
-        """Symbol getter."""
-        return self._symbol
-
-    @symbol.setter
-    def symbol(self, new_symbol: str):
-        """Symbol setter."""
-        self._symbol = new_symbol.upper()
