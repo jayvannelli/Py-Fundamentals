@@ -3,7 +3,7 @@ from .dclasses import BalanceSheetStatement, CashFlowStatement, IncomeStatement
 
 
 @dataclass
-class BalanceSheetContainer:
+class BalanceSheetsContainer:
     symbol: str
     period: str
     limit: int
@@ -12,7 +12,7 @@ class BalanceSheetContainer:
 
 
 @dataclass
-class IncomeStatementContainer:
+class IncomeStatementsContainer:
     symbol: str
     period: str
     limit: int
@@ -21,7 +21,7 @@ class IncomeStatementContainer:
 
 
 @dataclass
-class CashFlowContainer:
+class CashFlowsContainer:
     symbol: str
     period: str
     limit: int
